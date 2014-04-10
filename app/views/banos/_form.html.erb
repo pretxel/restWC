@@ -1,0 +1,29 @@
+<%= form_for(@bano) do |f| %>
+  <% if @bano.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bano.errors.count, "error") %> prohibited this bano from being saved:</h2>
+
+      <ul>
+      <% @bano.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_field :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :latitud %><br>
+    <%= f.text_field :latitud %>
+  </div>
+  <div class="field">
+    <%= f.label :longitud %><br>
+    <%= f.text_field :longitud %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

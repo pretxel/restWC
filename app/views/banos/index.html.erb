@@ -1,0 +1,31 @@
+<h1>Listing banos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descripcion</th>
+      <th>Latitud</th>
+      <th>Longitud</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @banos.each do |bano| %>
+      <tr>
+        <td><%= bano.descripcion %></td>
+        <td><%= bano.latitud %></td>
+        <td><%= bano.longitud %></td>
+        <td><%= link_to 'Show', bano %></td>
+        <td><%= link_to 'Edit', edit_bano_path(bano) %></td>
+        <td><%= link_to 'Destroy', bano, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bano', new_bano_path %>
