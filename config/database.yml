@@ -20,10 +20,10 @@ test:
 
 production:
   adapter: postgresql
-    encoding: unicode
-    pool: 5
-    database: moviesst_restwc
-    username: moviesst_restwcU
-    password: restwc2014!
-    host: box366.bluehost.com
-    port: 5432
+  encoding: unicode
+  pool: 5
+  database: moviesst_restwc
+  username: moviesst_restwcU
+  password: restwc2014!
+  host: box366.bluehost.com
+  port: 5432

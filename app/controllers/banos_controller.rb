@@ -53,7 +53,6 @@ class BanosController < ApplicationController
   def calculaZonaHoraria(longitud)
      zonaHoraria = longitud.to_f / 15
      return zonaHoraria.to_i
-
   end
 
   def obtieneTodos
