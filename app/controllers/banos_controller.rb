@@ -1,3 +1,5 @@
+require "operacionGps.rb"
+
 class BanosController < ApplicationController
   # before_action :set_bano, only: [:show, :edit, :update, :destroy]
 
@@ -20,6 +22,15 @@ class BanosController < ApplicationController
     response :not_acceptable
   end
 
+  swagger_api :modificaBaño do
+    summary "Modifica la posicion de un baño"
+    param :form, :latitud, :float, :required, "Latitud"
+    param :form, :longitud, :float, :required, "Longitud"
+    param :form, :descripcion, :string, :required, "Descripción"
+    response :json
+    response :not_acceptable
+  end
+
   def crearPunto
 
     latitud = params[:latitud]
@@ -30,7 +41,9 @@ class BanosController < ApplicationController
     logger.info("LONGITUD: #{longitud}")
     logger.info("DESCRIPCION: #{descripcion}")
 
-    zonaHor = calculaZonaHoraria(longitud)
+    operacionGps = OperacionGps.new
+
+    zonaHor = operacionGps.calculaZonaHoraria(longitud)
 
     @banoNuevo = Bano.new
     @banoNuevo.latitud = latitud
@@ -50,16 +63,29 @@ class BanosController < ApplicationController
   end
 
 
-  def calculaZonaHoraria(longitud)
-     zonaHoraria = longitud.to_f / 15
-     return zonaHoraria.to_i
-  end
-
   def obtieneTodos
     @banos = Bano.all
     render :json => {result:@banos}, :status => 200
   end
 
+
+  def modificaBaño
+
+    latitud = params[:latitud]
+    longitud = params[:longitud]
+    descripcion = params[:descripcion]
+
+    logger.info("LATITUD: #{latitud}") 
+    logger.info("LONGITUD: #{longitud}")
+    logger.info("DESCRIPCION: #{descripcion}")
+
+    operacionGps = OperacionGps.new
+
+    zonaHor = operacionGps.calculaZonaHoraria(longitud)
+
+    @bano.update(bano_params)
+
+  end
 
 
 
