@@ -9,7 +9,7 @@ SwaggerDocsSample::Application.routes.draw do
   post '/WC' => 'banos#crearPunto'
   get '/WC' => 'banos#obtieneTodos'
 
-  post '/calcula' => 'coordenada#obtieneCercanos'
+  get '/calcula' => 'coordenada#obtieneCercanos'
 
   root 'welcome#index'
 
