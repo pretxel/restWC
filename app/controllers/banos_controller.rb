@@ -65,7 +65,7 @@ class BanosController < ApplicationController
 
   def obtieneTodos
     @banos = Bano.all
-    render :json => {result:@banos}, :status => 200
+    render :json => @banos.to_json, :callback => params['callback'], :status => 200
   end
 
 
