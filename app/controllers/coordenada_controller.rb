@@ -55,7 +55,7 @@ class CoordenadaController < ApplicationController
     	# distancia = calculaDistancia(latitud, longitud)
 
 
-	  	render :json => {result: filtroBanos}, :status => 200
+	  	render :json => filtroBanos, :callback => params['callback'], :status => 200
 	  end
 
 
